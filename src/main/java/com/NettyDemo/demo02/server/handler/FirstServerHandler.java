@@ -18,6 +18,23 @@ public class FirstServerHandler extends ChannelInboundHandlerAdapter {
         ByteBuf byteBuf = (ByteBuf)msg;
 
         System.out.println("服务端读到信息->"+byteBuf.toString(Charset.forName("UTF-8")));
+
+        //获取发给客户端的ByteBuf
+        ByteBuf resultByteBuf = getByteBuf(ctx);
+
+        //发送给客户端
+        ctx.channel().writeAndFlush(resultByteBuf);
+    }
+
+    private ByteBuf getByteBuf(ChannelHandlerContext ctx){
+        byte[] bytes = "服务端已收到信息".getBytes(Charset.forName("UTF-8"));
+
+        ByteBuf byteBuf = ctx.alloc().buffer();
+
+        byteBuf.writeBytes(bytes);
+
+        return byteBuf;
+
     }
 
 }
