@@ -37,7 +37,16 @@ public class FirstClientHandler extends ChannelInboundHandlerAdapter {
         return byteBuf;
     }
 
+    /**
+     * 读取服务端返回信息
+     * @param ctx
+     * @param msg
+     * @throws Exception
+     */
+    @Override
+    public void channelRead(ChannelHandlerContext ctx, Object msg){
+        ByteBuf byteBuf = (ByteBuf)msg;
 
-
-
+        System.out.println(new Date() +  "客户端收到信息->" + byteBuf.toString(Charset.forName("UTF-8")));
+    }
 }
