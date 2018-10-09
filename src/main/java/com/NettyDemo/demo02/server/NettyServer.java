@@ -15,7 +15,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 public class NettyServer {
 
     //服务器默认绑定端口
-    private final static int SERVER_DEFAULT_PORT =  8888;
+    private final static int SERVER_DEFAULT_PORT =  8090;
 
     //服务器实际绑定端口
     private static int SERVER_BIND_PORT;

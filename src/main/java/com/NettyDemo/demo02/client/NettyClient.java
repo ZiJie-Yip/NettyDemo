@@ -16,7 +16,7 @@ public class NettyClient {
 
     private final static String SERVER_DEFAULT_HOST = "127.0.0.1";
 
-    private final static int SERVER_DEFAULT_PORT = 8888;
+    private final static int SERVER_DEFAULT_PORT = 8090;
 
     //网络重连最大
     private final static Integer MAX_RETRY = 3;
