@@ -1,9 +1,6 @@
-package com.NettyDemo.demo05.server;
+package com.NettyDemo.demo06.server;
 
-import com.NettyDemo.demo05.codec.PacketDecoder;
-import com.NettyDemo.demo05.codec.PacketEncoder;
-import com.NettyDemo.demo05.server.handler.LoginRequestHandler;
-import com.NettyDemo.demo05.server.handler.MessageRequestHandler;
+import com.NettyDemo.demo06.server.handler.FirstServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -39,11 +36,7 @@ public class NettyServer {
                 .childHandler(new ChannelInitializer<NioSocketChannel>() {
                     @Override
                     protected void initChannel(NioSocketChannel nioSocketChannel) throws Exception {
-                        nioSocketChannel.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE , 7 ,4));
-                        nioSocketChannel.pipeline().addLast(new PacketDecoder());
-                        nioSocketChannel.pipeline().addLast(new LoginRequestHandler());
-                        nioSocketChannel.pipeline().addLast(new MessageRequestHandler());
-                        nioSocketChannel.pipeline().addLast(new PacketEncoder());
+                        nioSocketChannel.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 7 , 4));
                     }
                 });
         com.NettyDemo.demo01.server.NettyServer.bind(serverBootstrap,SERVER_DEFAULT_PORT);
