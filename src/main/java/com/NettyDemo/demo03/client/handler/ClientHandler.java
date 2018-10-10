@@ -1,9 +1,6 @@
 package com.NettyDemo.demo03.client.handler;
 
-import com.NettyDemo.demo03.protocol.command.LoginRequestPacket;
-import com.NettyDemo.demo03.protocol.command.LoginResponsePacket;
-import com.NettyDemo.demo03.protocol.command.Packet;
-import com.NettyDemo.demo03.protocol.command.PacketCodeC;
+import com.NettyDemo.demo03.protocol.command.*;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 import io.netty.channel.ChannelHandlerContext;
@@ -51,6 +48,9 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
             }else{
                 System.out.println(new Date() + ":客户端登录失败，原因:" + loginResponsePacket.getReason());
             }
+        }else if(packet instanceof MessageResponsePacket){
+            MessageResponsePacket messageResponsePacket = (MessageResponsePacket)packet;
+            System.out.println(new Date() + ": 收到服务端的消息: " + messageResponsePacket.getMessage());
         }
     }
 }

@@ -34,6 +34,8 @@ public class PacketCodeC {
         packetTypeMap = new HashMap<>();
         packetTypeMap.put(Command.LOGIN_REQUEST,LoginRequestPacket.class);
         packetTypeMap.put(Command.LOGIN_RESPONSE,LoginResponsePacket.class);
+        packetTypeMap.put(Command.MESSAGE_REQUEST,MessageRequestPacket.class);
+        packetTypeMap.put(Command.MESSAGE_RESPONSE,MessageResponsePacket.class);
 
         serializerMap = new HashMap<>();
         serializerMap.put(SerializerAlgorithm.JSON,Serializer.DEFAULT);

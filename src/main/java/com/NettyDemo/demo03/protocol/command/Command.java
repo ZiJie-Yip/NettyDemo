@@ -14,5 +14,13 @@ public interface Command {
      * 登录返回
      */
     Byte LOGIN_RESPONSE = 2;
+    /**
+     * 消息请求
+     */
+    Byte MESSAGE_REQUEST = 3;
+    /**
+     * 消息返回
+     */
+    Byte MESSAGE_RESPONSE = 4;
 
 }

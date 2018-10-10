@@ -1,6 +1,5 @@
 package com.NettyDemo.demo03.server;
 
-import com.NettyDemo.demo02.server.handler.FirstServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.nio.NioEventLoopGroup;
