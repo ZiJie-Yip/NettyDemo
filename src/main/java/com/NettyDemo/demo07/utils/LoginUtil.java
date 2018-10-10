@@ -1,6 +1,6 @@
-package com.NettyDemo.demo05.utils;
+package com.NettyDemo.demo07.utils;
 
-import com.NettyDemo.demo05.command.Attributes;
+import com.NettyDemo.demo07.command.Attributes;
 import io.netty.channel.Channel;
 import io.netty.util.Attribute;
 

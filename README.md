@@ -20,3 +20,6 @@
 
 ### Demo6
 >拆包粘包
+
+### Demo7
+>使用 channelHandler 的热插拔实现客户端身份校验
