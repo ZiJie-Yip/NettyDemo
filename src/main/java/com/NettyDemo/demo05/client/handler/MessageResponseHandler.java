@@ -1,6 +1,6 @@
-package com.NettyDemo.demo5.client.handler;
+package com.NettyDemo.demo05.client.handler;
 
-import com.NettyDemo.demo5.command.MessageResponsePacket;
+import com.NettyDemo.demo05.command.MessageResponsePacket;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 

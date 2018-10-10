@@ -1,13 +1,12 @@
-package com.NettyDemo.demo5.client;
+package com.NettyDemo.demo05.client;
 
-import com.NettyDemo.demo5.client.handler.ClientHandler;
-import com.NettyDemo.demo5.client.handler.LoginResponseHandler;
-import com.NettyDemo.demo5.client.handler.MessageResponseHandler;
-import com.NettyDemo.demo5.codec.PacketDecoder;
-import com.NettyDemo.demo5.codec.PacketEncoder;
-import com.NettyDemo.demo5.command.MessageRequestPacket;
-import com.NettyDemo.demo5.command.PacketCodeC;
-import com.NettyDemo.demo5.utils.LoginUtil;
+import com.NettyDemo.demo05.client.handler.LoginResponseHandler;
+import com.NettyDemo.demo05.client.handler.MessageResponseHandler;
+import com.NettyDemo.demo05.codec.PacketDecoder;
+import com.NettyDemo.demo05.codec.PacketEncoder;
+import com.NettyDemo.demo05.command.MessageRequestPacket;
+import com.NettyDemo.demo05.command.PacketCodeC;
+import com.NettyDemo.demo05.utils.LoginUtil;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;

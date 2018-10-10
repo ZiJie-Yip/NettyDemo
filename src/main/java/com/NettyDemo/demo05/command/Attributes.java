@@ -1,4 +1,4 @@
-package com.NettyDemo.demo5.command;
+package com.NettyDemo.demo05.command;
 
 import io.netty.util.AttributeKey;
 

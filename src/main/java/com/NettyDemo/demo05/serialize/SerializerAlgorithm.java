@@ -1,4 +1,4 @@
-package com.NettyDemo.demo5.serialize;
+package com.NettyDemo.demo05.serialize;
 
 /**
  * @Author: ZiJie.Yip

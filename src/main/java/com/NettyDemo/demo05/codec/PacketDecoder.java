@@ -1,6 +1,6 @@
-package com.NettyDemo.demo5.codec;
+package com.NettyDemo.demo05.codec;
 
-import com.NettyDemo.demo5.command.PacketCodeC;
+import com.NettyDemo.demo05.command.PacketCodeC;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;

@@ -1,6 +1,6 @@
-package com.NettyDemo.demo5.client.handler;
+package com.NettyDemo.demo05.client.handler;
 
-import com.NettyDemo.demo5.command.*;
+import com.NettyDemo.demo05.command.*;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 import io.netty.channel.ChannelHandlerContext;

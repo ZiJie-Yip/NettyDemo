@@ -1,7 +1,7 @@
-package com.NettyDemo.demo5.command;
+package com.NettyDemo.demo05.command;
 
-import com.NettyDemo.demo5.serialize.Serializer;
-import com.NettyDemo.demo5.serialize.SerializerAlgorithm;
+import com.NettyDemo.demo05.serialize.Serializer;
+import com.NettyDemo.demo05.serialize.SerializerAlgorithm;
 import io.netty.buffer.ByteBuf;
 
 import java.util.HashMap;

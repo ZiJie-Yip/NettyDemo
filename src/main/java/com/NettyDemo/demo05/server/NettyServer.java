@@ -1,10 +1,9 @@
-package com.NettyDemo.demo5.server;
+package com.NettyDemo.demo05.server;
 
-import com.NettyDemo.demo5.codec.PacketDecoder;
-import com.NettyDemo.demo5.codec.PacketEncoder;
-import com.NettyDemo.demo5.server.handler.LoginRequestHandler;
-import com.NettyDemo.demo5.server.handler.MessageRequestHandler;
-import com.NettyDemo.demo5.server.handler.ServerHandler;
+import com.NettyDemo.demo05.codec.PacketDecoder;
+import com.NettyDemo.demo05.codec.PacketEncoder;
+import com.NettyDemo.demo05.server.handler.LoginRequestHandler;
+import com.NettyDemo.demo05.server.handler.MessageRequestHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.nio.NioEventLoopGroup;

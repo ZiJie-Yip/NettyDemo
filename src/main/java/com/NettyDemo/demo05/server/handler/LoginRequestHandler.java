@@ -1,7 +1,7 @@
-package com.NettyDemo.demo5.server.handler;
+package com.NettyDemo.demo05.server.handler;
 
-import com.NettyDemo.demo5.command.LoginRequestPacket;
-import com.NettyDemo.demo5.command.LoginResponsePacket;
+import com.NettyDemo.demo05.command.LoginRequestPacket;
+import com.NettyDemo.demo05.command.LoginResponsePacket;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
