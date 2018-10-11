@@ -2,6 +2,7 @@ package com.NettyDemo.demo08.server.handler;
 
 import com.NettyDemo.demo08.utils.LoginUtil;
 import com.NettyDemo.demo08.utils.SessionUtil;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
@@ -10,7 +11,14 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
  * @Description:
  * @date: 2018/10/10 16:04
  */
+@ChannelHandler.Sharable
 public class AuthHandler extends ChannelInboundHandlerAdapter {
+
+    public static final AuthHandler INSTANCE = new AuthHandler();
+
+    protected AuthHandler(){
+
+    }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {

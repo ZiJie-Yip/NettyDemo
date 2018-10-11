@@ -5,6 +5,7 @@ import com.NettyDemo.demo08.command.LoginResponsePacket;
 import com.NettyDemo.demo08.session.Session;
 import com.NettyDemo.demo08.utils.LoginUtil;
 import com.NettyDemo.demo08.utils.SessionUtil;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
@@ -16,7 +17,14 @@ import java.util.UUID;
  * @Description:登录返回处理
  * @date: 2018/10/10 14:55
  */
+@ChannelHandler.Sharable
 public class LoginResponseHandler extends SimpleChannelInboundHandler<LoginResponsePacket> {
+
+    public static final LoginResponseHandler INSTANCE = new LoginResponseHandler();
+
+    protected LoginResponseHandler(){
+
+    }
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, LoginResponsePacket loginResponsePacket) throws Exception {

@@ -25,4 +25,11 @@
 >使用 channelHandler 的热插拔实现客户端身份校验
 
 ### Demo8
->客户端互聊
+>聊天完整实现 
+命令:
+创建群:createGroup  
+加入群:joinGroup 
+退出群:quitGroup
+展示群用户:listGroupMembers
+发送群消息:sendToGroup
+发送用户消息:sendToUser

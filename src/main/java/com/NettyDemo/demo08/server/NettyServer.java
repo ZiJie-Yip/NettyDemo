@@ -1,11 +1,10 @@
 package com.NettyDemo.demo08.server;
 
+import com.NettyDemo.demo08.codec.PacketCodecHandler;
 import com.NettyDemo.demo08.codec.PacketDecoder;
 import com.NettyDemo.demo08.codec.PacketEncoder;
 import com.NettyDemo.demo08.codec.Spliter;
-import com.NettyDemo.demo08.server.handler.AuthHandler;
-import com.NettyDemo.demo08.server.handler.LoginRequestHandler;
-import com.NettyDemo.demo08.server.handler.MessageRequestHandler;
+import com.NettyDemo.demo08.server.handler.*;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -41,11 +40,10 @@ public class NettyServer {
                     @Override
                     protected void initChannel(NioSocketChannel nioSocketChannel) throws Exception {
                         nioSocketChannel.pipeline().addLast(new Spliter());
-                        nioSocketChannel.pipeline().addLast(new PacketDecoder());
-                        nioSocketChannel.pipeline().addLast(new LoginRequestHandler());
-                        nioSocketChannel.pipeline().addLast(new AuthHandler());
-                        nioSocketChannel.pipeline().addLast(new MessageRequestHandler());
-                        nioSocketChannel.pipeline().addLast(new PacketEncoder());
+                        nioSocketChannel.pipeline().addLast(PacketCodecHandler.INSTANCE);
+                        nioSocketChannel.pipeline().addLast(LoginRequestHandler.INSTANCE);
+                        nioSocketChannel.pipeline().addLast(AuthHandler.INSTANCE);
+                        nioSocketChannel.pipeline().addLast(IMHandler.INSTANCE);
                     }
                 });
         com.NettyDemo.demo01.server.NettyServer.bind(serverBootstrap,SERVER_DEFAULT_PORT);

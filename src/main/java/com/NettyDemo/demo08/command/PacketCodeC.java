@@ -35,6 +35,18 @@ public class PacketCodeC {
         packetTypeMap.put(Command.LOGIN_RESPONSE, LoginResponsePacket.class);
         packetTypeMap.put(Command.MESSAGE_REQUEST, MessageRequestPacket.class);
         packetTypeMap.put(Command.MESSAGE_RESPONSE, MessageResponsePacket.class);
+        packetTypeMap.put(Command.CREATE_GROUP_REQUEST,CreateGroupRequestPacket.class);
+        packetTypeMap.put(Command.CREATE_GROUP_RESPONSE,CreateGroupResponsePacket.class);
+        packetTypeMap.put(Command.JOIN_GROUP_REQUEST,JoinGroupRequestPacket.class);
+        packetTypeMap.put(Command.JOIN_GROUP_RESPONSE,JoinGroupResponsePacket.class);
+        packetTypeMap.put(Command.QUIT_GROUP_REQUEST,QuitGroupRequestPacket.class);
+        packetTypeMap.put(Command.QUIT_GROUP_RESPONSE,QuitGroupResponsePacket.class);
+        packetTypeMap.put(Command.LIST_GROUP_MEMBERS_REQUEST,ListGroupMembersRequestPacket.class);
+        packetTypeMap.put(Command.LIST_GROUP_MEMBERS_RESPONSE,ListGroupMembersResponsePacket.class);
+        packetTypeMap.put(Command.LOGOUT_REQUEST,LogoutRequestPacket.class);
+        packetTypeMap.put(Command.LOGOUT_RESPONSE,LogoutResponsePacket.class);
+        packetTypeMap.put(Command.GROUP_MESSAGE_REQUEST,GroupMessageRequestPacket.class);
+        packetTypeMap.put(Command.GROUP_MESSAGE_RESPONSE,GroupMessageResponsePacket.class);
 
         serializerMap = new HashMap<>();
         serializerMap.put(SerializerAlgorithm.JSON, Serializer.DEFAULT);
@@ -45,7 +57,7 @@ public class PacketCodeC {
      * @param packet
      * @return
      */
-    public ByteBuf encode(ByteBuf byteBuf, Packet packet){
+    public void encode(ByteBuf byteBuf, Packet packet){
         //2. 序列化 Java 对象
         byte[] bytes = Serializer.DEFAULT.serialize(packet);
 
@@ -63,7 +75,6 @@ public class PacketCodeC {
         //3-5. 数据
         byteBuf.writeBytes(bytes);
 
-        return byteBuf;
     }
 
     /**

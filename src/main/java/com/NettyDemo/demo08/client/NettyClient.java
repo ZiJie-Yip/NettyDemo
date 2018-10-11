@@ -1,7 +1,9 @@
 package com.NettyDemo.demo08.client;
 
-import com.NettyDemo.demo08.client.handler.LoginResponseHandler;
-import com.NettyDemo.demo08.client.handler.MessageResponseHandler;
+import com.NettyDemo.demo08.client.console.ConsoleCommandManager;
+import com.NettyDemo.demo08.client.console.LoginConsoleCommand;
+import com.NettyDemo.demo08.client.handler.*;
+import com.NettyDemo.demo08.codec.PacketCodecHandler;
 import com.NettyDemo.demo08.codec.PacketDecoder;
 import com.NettyDemo.demo08.codec.PacketEncoder;
 import com.NettyDemo.demo08.codec.Spliter;
@@ -49,10 +51,15 @@ public class NettyClient {
                     @Override
                     protected void initChannel(SocketChannel socketChannel) throws Exception {
                         socketChannel.pipeline().addLast(new Spliter());
-                        socketChannel.pipeline().addLast(new PacketDecoder());
-                        socketChannel.pipeline().addLast(new LoginResponseHandler());
-                        socketChannel.pipeline().addLast(new MessageResponseHandler());
-                        socketChannel.pipeline().addLast(new PacketEncoder());
+                        socketChannel.pipeline().addLast(PacketCodecHandler.INSTANCE);
+                        socketChannel.pipeline().addLast(LoginResponseHandler.INSTANCE);
+                        socketChannel.pipeline().addLast(MessageResponseHandler.INSTANCE);
+                        socketChannel.pipeline().addLast(CreateGroupResponseHandler.INSTANCE);
+                        socketChannel.pipeline().addLast(JoinGroupResponseHandler.INSTANCE);
+                        socketChannel.pipeline().addLast(QuitGroupResponseHandler.INSTANCE);
+                        socketChannel.pipeline().addLast(ListGroupMembersResponseHandler.INSTANCE);
+                        socketChannel.pipeline().addLast(GroupMessageResponseHandler.INSTANCE);
+                        socketChannel.pipeline().addLast(LogoutResponseHandler.INSTANCE);
                     }
                 });
         connect(bootstrap,SERVER_DEFAULT_HOST,SERVER_DEFAULT_PORT,MAX_RETRY);
@@ -81,37 +88,22 @@ public class NettyClient {
     }
 
     private static void startConsoleThread(Channel channel){
+        ConsoleCommandManager consoleCommandManager = new ConsoleCommandManager();
+        LoginConsoleCommand loginConsoleCommand = new LoginConsoleCommand();
+
         Scanner scanner = new Scanner(System.in);
-        LoginRequestPacket loginRequestPacket = new LoginRequestPacket();
         new Thread(() -> {
             while(!Thread.interrupted()){
                 if(!SessionUtil.hasLogin(channel)){
-                    System.out.println("请输入用户名登录: ");
-                    String username = scanner.nextLine();
-                    loginRequestPacket.setUsername(username);
-
-                    // 密码使用 默认
-                    loginRequestPacket.setPassword("pwd");
-
-                    //发送登录数据包
-                    channel.writeAndFlush(loginRequestPacket);
-                    waitForLoginResponse();
+                    loginConsoleCommand.exec(scanner,channel);
                 }else{
-                    String toUserId = scanner.next();
-                    String message = scanner.next();
-                    channel.writeAndFlush(new MessageRequestPacket(toUserId,message));
+                    consoleCommandManager.exec(scanner,channel);
                 }
             }
         }).start();
     }
 
-    private static void waitForLoginResponse(){
-        try{
-            Thread.sleep(1000);
-        }catch (InterruptedException ignored){
 
-        }
-    }
 
 
 
