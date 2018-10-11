@@ -4,19 +4,17 @@ import com.NettyDemo.demo08.client.handler.LoginResponseHandler;
 import com.NettyDemo.demo08.client.handler.MessageResponseHandler;
 import com.NettyDemo.demo08.codec.PacketDecoder;
 import com.NettyDemo.demo08.codec.PacketEncoder;
+import com.NettyDemo.demo08.codec.Spliter;
 import com.NettyDemo.demo08.command.LoginRequestPacket;
 import com.NettyDemo.demo08.command.MessageRequestPacket;
-import com.NettyDemo.demo08.command.PacketCodeC;
 import com.NettyDemo.demo08.utils.SessionUtil;
 import io.netty.bootstrap.Bootstrap;
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 
 import java.util.Date;
 import java.util.Scanner;
@@ -50,7 +48,7 @@ public class NettyClient {
                 .handler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     protected void initChannel(SocketChannel socketChannel) throws Exception {
-                        socketChannel.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE , 7 ,4));
+                        socketChannel.pipeline().addLast(new Spliter());
                         socketChannel.pipeline().addLast(new PacketDecoder());
                         socketChannel.pipeline().addLast(new LoginResponseHandler());
                         socketChannel.pipeline().addLast(new MessageResponseHandler());
